@@ -250,7 +250,7 @@ jobs:
         cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
 
         BASE_CONFIG="arch/${{ env.KERNEL_ARCH }}/configs/${{ env.KERNEL_CONFIG_BASE }}"
-        DEVICE_CONFIG="arch/${{ env.KERNEL_ARCH }}/configs/${{ env.KERNEL_CONFIG_FRAGMENT_DIR }}/${DEVICE}.config"
+        DEVICE_CONFIG="arch/${{ env.KERNEL_ARCH }}/configs/${{ env.KERNEL_CONFIG_FRAGMENT_DIR }}/${{ env.DEVICE }}.config"
 
         if [ ! -f "$BASE_CONFIG" ]; then
             echo "Missing base config: $BASE_CONFIG"
