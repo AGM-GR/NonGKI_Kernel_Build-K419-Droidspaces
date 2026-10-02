@@ -384,6 +384,14 @@ jobs:
             fi
         fi
 
+        if [ "${{ env.ADD_USB_RTL8152 }}" = true ]; then
+            if grep -q '^CONFIG_USB_RTL8152=' "$CONFIG_FILE"; then
+                sed -i 's/^CONFIG_USB_RTL8152=.*/CONFIG_USB_RTL8152=y/' "$CONFIG_FILE"
+            else
+                echo 'CONFIG_USB_RTL8152=y' >> "$CONFIG_FILE"
+            fi
+        fi
+
         if [ "${{ env.FIX_WIFI_SPEED }}" = true ]; then
             rm -rf drivers/misc/mediatek/connectivity
             cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel/drivers/misc/mediatek
